@@ -46,9 +46,9 @@ export default function RestaurantCard({ restaurant, isFavorite, onToggleFavorit
             <MapPinIcon className="h-3.5 w-3.5 shrink-0" />
             <span className="truncate">{city}</span>
           </p>
-          <div className="mt-2.5 flex items-center justify-between">
+          <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2">
             <RatingStars rating={rating} reviewCount={reviewCount} />
-            <span className="chip bg-basil-50 text-basil-700">{PRICE_LEVEL_LABEL[priceLevel] || priceLevel}</span>
+            <span className="chip bg-basil-50 text-basil-700 whitespace-nowrap">{PRICE_LEVEL_LABEL[priceLevel] || priceLevel}</span>
           </div>
         </div>
       </Link>
