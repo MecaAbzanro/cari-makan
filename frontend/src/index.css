@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-linen text-char font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  /* Outline fokus yang jelas untuk aksesibilitas keyboard, tanpa terlihat berantakan */
+  :focus-visible {
+    outline: 2px solid theme('colors.basil.500');
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-basil-500 to-basil-600 px-5 py-2.5 text-sm font-semibold text-linen shadow-soft transition-all hover:shadow-glow hover:brightness-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:brightness-100;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-clay bg-white px-5 py-2.5 text-sm font-semibold text-char transition-all hover:border-basil-400 hover:text-basil-500 active:scale-95;
+  }
+  .input-field {
+    @apply w-full rounded-2xl border border-clay bg-white px-4 py-2.5 text-sm text-char placeholder:text-char-faint focus:border-basil-400 focus:outline-none;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+  }
+  .skeleton {
+    @apply rounded-2xl bg-clay/60 bg-[length:800px_100%] bg-gradient-to-r from-clay/40 via-linen-deep to-clay/40 animate-shimmer;
+  }
+  /* Kartu premium dengan hover lift kuat — dipakai untuk RestaurantCard & menu */
+  .card-premium {
+    @apply rounded-3xl border border-clay/70 bg-white shadow-card transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-glow;
+  }
+  /* Teks gradient basil→saffron, dipakai untuk aksen judul */
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-basil-600 via-basil-500 to-saffron-500 bg-clip-text text-transparent;
+  }
+  /* Tombol heart favorite dengan animasi beat saat aktif */
+  .heart-btn {
+    @apply grid h-9 w-9 place-items-center rounded-full bg-white/95 text-char shadow-soft backdrop-blur transition-transform hover:scale-110 active:scale-95;
+  }
+  .heart-btn.is-active svg {
+    @apply animate-heartBeat;
+  }
+}
+
+/* Sembunyikan scrollbar tapi tetap bisa discroll, untuk strip kategori horizontal */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

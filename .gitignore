@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment files — JANGAN pernah commit file ini!
+.env
+.env.local
+.env.production
+
+# Build output
+dist/
+
+# Log files
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
