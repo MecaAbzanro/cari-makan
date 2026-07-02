@@ -28,14 +28,14 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-clay/70 bg-linen/85 shadow-sm backdrop-blur-md">
       <div className="container-page flex h-[72px] items-center justify-between gap-4">
-          <Link to="/" className="group flex items-center gap-2.5 transition-transform active:scale-95">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-basil-600 text-white shadow-sm transition-colors group-hover:bg-basil-700">
-              <ChefHat className="h-5 w-5" />
-            </div>
-            <span className="font-display text-2xl font-bold tracking-tight text-char">
-              Cari<span className="text-basil-600">Makan</span>
-            </span>
-          </Link>
+        <Link to="/" className="group flex items-center gap-2.5 transition-transform active:scale-95">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-basil-600 text-white shadow-sm transition-colors group-hover:bg-basil-700">
+            <ChefHat className="h-5 w-5" />
+          </div>
+          <span className="font-display text-2xl font-bold tracking-tight text-char">
+            Cari<span className="text-basil-600">Makan</span>
+          </span>
+        </Link>
 
         <form onSubmit={handleSearch} className="hidden flex-1 max-w-lg items-center sm:flex">
           <div className="relative w-full">

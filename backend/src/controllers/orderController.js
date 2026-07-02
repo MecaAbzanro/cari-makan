@@ -9,7 +9,7 @@ import MenuItem from '../models/MenuItem.js'
 // Harga & nama menu diambil ulang dari database (bukan dipercaya begitu saja
 // dari frontend), supaya user tidak bisa memanipulasi harga lewat request.
 export const createOrder = asyncHandler(async (req, res) => {
-  const { restaurant, items, deliveryAddress, notes } = req.body
+  const { restaurant, items, deliveryAddress, notes, paymentMethod } = req.body
 
   if (!items || items.length === 0) {
     res.status(400)
@@ -18,6 +18,10 @@ export const createOrder = asyncHandler(async (req, res) => {
   if (!deliveryAddress) {
     res.status(400)
     throw new Error('Alamat pengiriman wajib diisi')
+  }
+  if (!paymentMethod || !['cod', 'transfer', 'ewallet'].includes(paymentMethod)) {
+    res.status(400)
+    throw new Error('Metode pembayaran tidak valid')
   }
 
   const menuIds = items.map((i) => i.menuItem)
@@ -50,6 +54,7 @@ export const createOrder = asyncHandler(async (req, res) => {
     total,
     deliveryAddress,
     notes,
+    paymentMethod,
   })
 
   res.status(201).json({ success: true, message: 'Pesanan berhasil dibuat', data: order })

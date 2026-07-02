@@ -27,6 +27,7 @@ export default function Cart() {
 
   const [address, setAddress] = useState('')
   const [notes, setNotes] = useState('')
+  const [paymentMethod, setPaymentMethod] = useState('cod')
   const [submitting, setSubmitting] = useState(false)
   const [completedOrder, setCompletedOrder] = useState(null)
 
@@ -49,6 +50,7 @@ export default function Cart() {
         items: items.map((i) => ({ menuItem: i.menuItemId, quantity: i.quantity })),
         deliveryAddress: address.trim(),
         notes: notes.trim(),
+        paymentMethod,
       })
       setCompletedOrder(order)
       clearCart()
@@ -188,6 +190,19 @@ export default function Cart() {
               required
               className="input-field resize-none"
             />
+          </div>
+
+          <div className="mt-3">
+            <label className="mb-1 block text-xs font-semibold text-char-soft">Metode Pembayaran</label>
+            <select
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+              className="input-field"
+            >
+              <option value="cod">Cash on Delivery (COD)</option>
+              <option value="transfer">Transfer Bank</option>
+              <option value="ewallet">E-Wallet (GoPay/OVO/Dana)</option>
+            </select>
           </div>
 
           <div className="mt-3">

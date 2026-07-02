@@ -213,6 +213,15 @@ export default function OrderDetail() {
                     </div>
                   </div>
                 )}
+                <div className="flex items-start gap-2.5 border-t border-clay/40 pt-3">
+                  <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center font-bold text-blue-500">
+                    $
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold text-char-faint">Metode Pembayaran</p>
+                    <p className="mt-0.5 text-sm uppercase text-char">{order.paymentMethod === 'cod' ? 'Cash on Delivery (COD)' : order.paymentMethod === 'transfer' ? 'Transfer Bank' : order.paymentMethod === 'ewallet' ? 'E-Wallet' : order.paymentMethod || 'COD'}</p>
+                  </div>
+                </div>
               </div>
             </div>
 

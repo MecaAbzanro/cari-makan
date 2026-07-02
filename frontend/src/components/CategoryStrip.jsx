@@ -28,6 +28,13 @@ function imageFor(category) {
   return CATEGORY_IMAGE[category.toLowerCase()] || FALLBACK_IMAGE
 }
 
+/**
+ * Menampilkan daftar kategori makanan sebagai strip scroll horizontal.
+ *
+ * @param {string[]} categories  - Daftar nama kategori dari backend.
+ * @param {string}   active      - Kategori yang sedang dipilih ('' = semua).
+ * @param {Function} onSelect    - Callback dipanggil dengan string kategori saat user klik.
+ */
 export default function CategoryStrip({ categories, active, onSelect }) {
   // Tambahkan 'Semua' sebagai kategori pertama
   const allCategories = ['', ...categories]

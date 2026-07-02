@@ -45,6 +45,11 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Alamat pengiriman wajib diisi'],
     },
+    paymentMethod: {
+      type: String,
+      enum: ['cod', 'transfer', 'ewallet'],
+      default: 'cod',
+    },
     notes: {
       type: String,
       default: '',

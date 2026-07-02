@@ -11,12 +11,13 @@ import { toast } from 'react-toastify'
 
 const STATUS_OPTIONS = ['pending', 'diproses', 'diantar', 'selesai', 'dibatalkan']
 
+// Warna badge status pesanan — dibedakan agar mudah dibaca sekilas
 const STATUS_STYLE = {
   pending: 'bg-saffron-50 text-saffron-700',
   diproses: 'bg-blue-50 text-blue-700',
   diantar: 'bg-purple-50 text-purple-700',
   selesai: 'bg-basil-50 text-basil-700',
-  dibatalkan: 'bg-basil-50 text-basil-700',
+  dibatalkan: 'bg-red-50 text-red-700',
 }
 
 export default function AdminOrders() {
@@ -109,6 +110,7 @@ export default function AdminOrders() {
               <div>
                 <span className="text-[10px] font-semibold uppercase text-char-faint lg:hidden">Total: </span>
                 <span className="text-sm font-semibold text-char">{formatRupiah(order.total)}</span>
+                <p className="text-[10px] uppercase text-char-faint mt-0.5">{order.paymentMethod === 'cod' ? 'COD' : order.paymentMethod === 'transfer' ? 'Transfer' : order.paymentMethod === 'ewallet' ? 'E-Wallet' : order.paymentMethod || 'COD'}</p>
               </div>
 
               {/* Tanggal */}
